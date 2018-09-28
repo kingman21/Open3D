@@ -26,18 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileXYZ, DISABLED_ReadPointCloudFromXYZ)
+TEST(FileXYZ, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileXYZ, DISABLED_WritePointCloudToXYZ)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

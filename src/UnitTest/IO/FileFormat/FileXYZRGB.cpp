@@ -26,18 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileXYZRGB, DISABLED_ReadPointCloudFromXYZRGB)
+TEST(FileXYZRGB, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileXYZRGB, DISABLED_WritePointCloudToXYZRGB)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

@@ -5,13 +5,12 @@
 import numpy as np
 import argparse
 import os
-import json
 import sys
+sys.path.append("..")
+sys.path.append("../../Utility")
+import json
 from open3d import *
-sys.path.append("../Utility")
-from file import *
-sys.path.append(".")
-from initialize_config import *
+from common import *
 from register_fragments import *
 
 
@@ -24,9 +23,8 @@ if __name__ == "__main__":
 
     with open(args.config) as json_file:
         config = json.load(json_file)
-        initialize_config(config)
         config['debug_mode'] = True
         ply_file_names = get_file_list(
-                join(config["path_dataset"], config["folder_fragment"]), ".ply")
+                os.path.join(config["path_dataset"], folder_fragment), ".ply")
         register_point_cloud_pair(ply_file_names,
                 args.source_id, args.target_id, config)

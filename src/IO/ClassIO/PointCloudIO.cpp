@@ -59,22 +59,17 @@ static const std::unordered_map<std::string,
 }    // unnamed namespace
 
 std::shared_ptr<PointCloud> CreatePointCloudFromFile(
-    const std::string &filename, const std::string &format)
+    const std::string &filename)
 {
     auto pointcloud = std::make_shared<PointCloud>();
-    ReadPointCloud(filename, *pointcloud, format);
+    ReadPointCloud(filename, *pointcloud);
     return pointcloud;
 }
 
-bool ReadPointCloud(const std::string &filename, PointCloud &pointcloud,
-        const std::string &format)
+bool ReadPointCloud(const std::string &filename, PointCloud &pointcloud)
 {
-    std::string filename_ext;
-    if (format == "auto") {
-        filename_ext = filesystem::GetFileExtensionInLowerCase(filename);
-    } else {
-        filename_ext = format;
-    }
+    std::string filename_ext =
+            filesystem::GetFileExtensionInLowerCase(filename);
     if (filename_ext.empty()) {
         PrintWarning("Read PointCloud failed: unknown file extension.\n");
         return false;

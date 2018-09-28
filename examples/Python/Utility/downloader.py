@@ -2,8 +2,6 @@
 # The MIT License (MIT)
 # See license file or visit www.open3d.org for details
 
-# examples/Python/Tutorial/Utility/downloader.py
-
 import zipfile
 import os
 import sys

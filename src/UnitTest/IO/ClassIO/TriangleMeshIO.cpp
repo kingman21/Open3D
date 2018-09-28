@@ -26,42 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TriangleMeshIO, DISABLED_CreateMeshFromFile)
+TEST(TriangleMeshIO, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TriangleMeshIO, DISABLED_ReadTriangleMesh)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TriangleMeshIO, DISABLED_WriteTriangleMesh)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TriangleMeshIO, DISABLED_ReadTriangleMeshFromPLY)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TriangleMeshIO, DISABLED_WriteTriangleMeshToPLY)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

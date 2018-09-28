@@ -26,10 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(Helper, DISABLED_SplitString)
+TEST(Helper, Default)
 {
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

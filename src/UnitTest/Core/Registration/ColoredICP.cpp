@@ -26,18 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(ColoredICP, DISABLED_RegistrationColoredICP)
+TEST(ColoredICP, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(ColoredICP, DISABLED_ICPConvergenceCriteria)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

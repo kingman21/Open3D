@@ -26,51 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileJSON, DISABLED_ReadIJsonConvertibleFromJSONStream)
+TEST(FileJSON, Default)
 {
-    UnitTest::NotImplemented();
+    NotImplemented();
 }
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileJSON, DISABLED_WriteIJsonConvertibleToJSONStream)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileJSON, DISABLED_ReadIJsonConvertibleFromJSON)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileJSON, DISABLED_WriteIJsonConvertibleToJSON)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileJSON, DISABLED_ReadIJsonConvertibleFromJSONString)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileJSON, DISABLED_WriteIJsonConvertibleToJSONString)
-{
-    UnitTest::NotImplemented();
-}
-

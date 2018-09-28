@@ -26,66 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_Constructor)
+TEST(TransformationEstimation, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_Destructor)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_MemberData)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_GetTransformationEstimationType)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_ComputeRMSE)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_ComputeTransformation)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_TransformationEstimationPointToPoint)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(TransformationEstimation, DISABLED_TransformationEstimationPointToPlane)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

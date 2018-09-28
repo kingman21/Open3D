@@ -26,26 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileLOG, DISABLED_ReadPinholeCameraTrajectoryFromLOG)
+TEST(FileLOG, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileLOG, DISABLED_PinholeCameraIntrinsic)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(FileLOG, DISABLED_WritePinholeCameraTrajectoryToLOG)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

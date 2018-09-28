@@ -26,58 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(RenderOptionWithEditing, DISABLED_Constructor)
+TEST(RenderOptionWithEditing, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(RenderOptionWithEditing, DISABLED_Destructor)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(RenderOptionWithEditing, DISABLED_MemberData)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(RenderOptionWithEditing, DISABLED_ConvertToJsonValue)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(RenderOptionWithEditing, DISABLED_ConvertFromJsonValue)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(RenderOptionWithEditing, DISABLED_IncreaseSphereSize)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(RenderOptionWithEditing, DISABLED_DecreaseSphereSize)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }

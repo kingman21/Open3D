@@ -9,8 +9,7 @@ import sys
 sys.path.append("../Advanced")
 sys.path.append("../Utility")
 import numpy as np
-from file import *
-from visualization import *
+from common import *
 from downloader import *
 from fast_global_registration import *
 from trajectory_io import *

@@ -40,7 +40,7 @@ configure_file("${PROJECT_SOURCE_DIR}/util/pip_package/setup.py.in"
 if(WIN32 AND NOT CYGWIN)
     set(DEF_INSTALL_CMAKE_DIR CMake)
 else()
-    set(DEF_INSTALL_CMAKE_DIR lib/cmake/Open3D)
+    set(DEF_INSTALL_CMAKE_DIR lib/CMake/Open3D)
 endif()
 set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
     "Installation directory for CMake files")
@@ -53,7 +53,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 option(BUILD_SHARED_LIBS         "Build shared libraries"                   OFF)
 option(WITH_OPENMP               "Use OpenMP multi-threading"               ON)
 option(ENABLE_HEADLESS_RENDERING "Use OSMesa for headless rendering"        OFF)
-option(BUILD_CPP_EXAMPLES        "Build the Open3D example programs"        ON)
+option(BUILD_CPP_EXAMPLES        "Build the Open3D example programs"        OFF)
 option(BUILD_UNIT_TESTS          "Build the Open3D unit tests"              OFF)
 option(BUILD_EIGEN3              "Build eigen3 from source"                 OFF)
 option(BUILD_GLEW                "Build glew from source"                   OFF)
@@ -182,13 +182,3 @@ add_subdirectory(src)
 
 # Examples
 add_subdirectory(examples)
-
-# `make check-style` returns non-zero exit code if styling is not compliant
-add_custom_target(check-style
-    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/util/scripts/check-style.sh
-)
-
-# `make apply-style` runs clang-format to format all source code
-add_custom_target(apply-style
-    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/util/scripts/apply-style.sh
-)

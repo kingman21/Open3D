@@ -26,50 +26,7 @@
 
 #include "UnitTest.h"
 
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(IJsonConvertibleIO, DISABLED_ReadIJsonConvertible)
+TEST(IJsonConvertibleIO, Default)
 {
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(IJsonConvertibleIO, DISABLED_WriteIJsonConvertible)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(IJsonConvertibleIO, DISABLED_ReadIJsonConvertibleFromJSON)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(IJsonConvertibleIO, DISABLED_WriteIJsonConvertibleToJSON)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(IJsonConvertibleIO, DISABLED_ReadIJsonConvertibleFromJSONString)
-{
-    UnitTest::NotImplemented();
-}
-
-// ----------------------------------------------------------------------------
-// 
-// ----------------------------------------------------------------------------
-TEST(IJsonConvertibleIO, DISABLED_WriteIJsonConvertibleToJSONString)
-{
-    UnitTest::NotImplemented();
+    NotImplemented();
 }
