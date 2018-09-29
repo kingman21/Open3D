@@ -25,11 +25,14 @@
 // ----------------------------------------------------------------------------
 
 #include "PointCloud.h"
+#include "TriangleMesh.h"
 
 #include <unordered_map>
+#include <numeric>
 
 #include <Core/Utility/Helper.h>
 #include <Core/Utility/Console.h>
+#include <Core/Geometry/KDTreeFlann.h>
 
 namespace open3d{
 
@@ -388,5 +391,120 @@ std::shared_ptr<PointCloud> CropPointCloud(const PointCloud &input,
     }
     return SelectDownSample(input, indices);
 }
+
+std::tuple<std::shared_ptr<PointCloud>,std::vector<size_t>>
+        RemoveRadiusOutliers(const PointCloud &input,
+        size_t nb_points , double search_radius)
+{
+    if (nb_points < 1 || search_radius <= 0)  {
+        PrintDebug("[RemoveRadiusOutliers] Illegal input parameters,"
+                "number of points and radius must be positive\n");
+        return std::make_tuple(std::make_shared<PointCloud>(),
+                std::vector<size_t>());
+    }
+    KDTreeFlann kdtree;
+    kdtree.SetGeometry(input);
+    std::vector<bool> mask = std::vector<bool>(input.points_.size());
+#ifdef _OPENMP
+#pragma omp parallel for schedule(static)
+#endif
+    for (auto i = 0; i < input.points_.size(); i++) {
+        std::vector<int> tmp_indices;
+        std::vector<double> dist;
+        int nb_neighbors = kdtree.SearchRadius(input.points_[i],
+                search_radius, tmp_indices,dist);
+        mask[i] = (nb_neighbors > nb_points);
+    }
+    std::vector<size_t> indices;
+    for (size_t i = 0; i < mask.size(); i++) {
+        if (mask[i]){
+            indices.push_back(i);
+        }
+    }
+    return std::make_tuple(SelectDownSample(input, indices), indices);
+}
+
+std::tuple<std::shared_ptr<PointCloud>,std::vector<size_t>>
+        RemoveStatisticalOutliers(const PointCloud &input,
+        size_t nb_neighbors , double std_ratio)
+{
+    if (nb_neighbors < 1 || std_ratio <= 0)  {
+        PrintDebug("[RemoveStatisticalOutliers] Illegal input parameters, number of neighbors"
+            "and standard deviation ratio must be positive\n");
+        return std::make_tuple(std::make_shared<PointCloud>(),
+                std::vector<size_t>());
+    }
+    if (input.points_.size() == 0) {
+        return std::make_tuple(std::make_shared<PointCloud>(),
+                std::vector<size_t>());
+    }
+    KDTreeFlann kdtree;
+    kdtree.SetGeometry(input);
+    std::vector<double> avg_distances =
+            std::vector<double>(input.points_.size());
+    std::vector<size_t> indices;
+    size_t valid_distances = 0;
+#ifdef _OPENMP
+#pragma omp parallel for schedule(static)
+#endif
+    for (auto i = 0; i < input.points_.size(); i++) {
+        std::vector<int> tmp_indices;
+        std::vector<double> dist;
+        kdtree.SearchKNN(input.points_[i],nb_neighbors,tmp_indices,dist);
+        double mean = -1;
+        if (dist.size() > 0) {
+            valid_distances++;
+            mean = std::accumulate(dist.begin(), dist.end(), 0.0) / dist.size();
+        }
+        avg_distances[i] = mean;
+    }
+    if (valid_distances == 0) {
+        return std::make_tuple(std::make_shared<PointCloud>(),
+                std::vector<size_t>());
+    }
+    double cloud_mean = std::accumulate(
+                avg_distances.begin(), avg_distances.end(), 0.0,
+                [](double const & x, double const & y)
+                { return y > 0 ?  x + y : x; });
+    cloud_mean /= valid_distances;
+    double sq_sum = std::inner_product(
+            avg_distances.begin(), avg_distances.end(),
+            avg_distances.begin(), 0.0,
+            [](double const & x, double const & y) { return x + y; },
+            [cloud_mean](double const & x, double const & y) {
+                return x > 0 ? (x - cloud_mean)*(y - cloud_mean) : 0;
+            });
+    // Bessel's correction
+    double std_dev = std::sqrt(sq_sum/ (valid_distances - 1));
+    double distance_threshold = cloud_mean + std_ratio*std_dev;
+    for (size_t i = 0; i < avg_distances.size(); i++) {
+        if (avg_distances[i] > 0 && avg_distances[i] < distance_threshold) {
+            indices.push_back(i);
+        }
+    }
+    return std::make_tuple(SelectDownSample(input, indices),indices);
+}
+
+std::shared_ptr<TriangleMesh> CropTriangleMesh(const TriangleMesh &input,
+        const Eigen::Vector3d &min_bound, const Eigen::Vector3d &max_bound)
+{
+    if (min_bound(0) > max_bound(0) || min_bound(1) > max_bound(1) ||
+            min_bound(2) > max_bound(2)) {
+        PrintDebug("[CropTriangleMesh] Illegal boundary clipped all points.\n");
+        return std::make_shared<TriangleMesh>();
+    }
+    std::vector<size_t> indices;
+    for (size_t i = 0; i < input.vertices_.size(); i++) {
+        const auto &point = input.vertices_[i];
+        if (point(0) >= min_bound(0) && point(0) <= max_bound(0) &&
+                point(1) >= min_bound(1) && point(1) <= max_bound(1) &&
+                point(2) >= min_bound(2) && point(2) <= max_bound(2)) {
+            indices.push_back(i);
+        }
+    }
+    return SelectDownSample(input, indices);
+}
+
+
 
 }   // namespace three
